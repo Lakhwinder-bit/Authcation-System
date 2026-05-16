@@ -1,45 +1,30 @@
-import nodemailer from 'nodemailer';
-import config from '../config/config.js';
+import { Resend } from 'resend';
 
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.GOOGLE_USER,
-        pass: process.env.GOOGLE_PASS
-    }
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Verify connection on startup
+resend.emails.send({
+    from: 'onboarding@resend.dev',
+    to: 'your_registered_email@gmail.com', // your resend account email
+    subject: 'Server Started',
+    html: '<p>Email server is ready</p>'
+}).then(() => {
+    console.log("✅ Email server is ready to send messages");
+}).catch((error) => {
+    console.error("❌ Error connecting to email server:", error);
 });
-
-transporter.verify((error, success) => {
-    if(error){
-        console.error("Error connecting to email server:",error);
-
-    }
-    else{
-        console.log("Email server is ready to send message")
-    }
-})
 
 export const sendEmail = async (to, subject, text, html) => {
     try {
-        const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false, // true for 465
-            auth: {
-                user: process.env.GOOGLE_USER,
-                pass: process.env.GOOGLE_PASS
-            }
-        });
-
-        const info = await transporter.sendMail({
-            from: `"Auth App" <${process.env.GOOGLE_USER}>`,
+        const data = await resend.emails.send({
+            from: 'onboarding@resend.dev', // replace with your domain in production
             to,
             subject,
             text,
             html
         });
 
-        console.log("✅ Email sent:", info.response);
+        console.log("✅ Email sent:", data.id);
 
     } catch (error) {
         console.log("❌ Email error FULL:", error);
