@@ -4,7 +4,7 @@ import { GetOtp } from "../api/auth";
 import gettingTime from "../utils/gettingTime";
 import toast, { Toaster } from 'react-hot-toast';
 import WelcomeToast from "../component/toaster/Welcometoaster";
-
+import logo from "frontend/src/assets/image.png"
 export default function Dashboard() {
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -215,7 +215,7 @@ useEffect(() => {
           </div>
 
           <div className="w-full relative md:-top-10">
-            <img src="/public/image.png" alt="hero image" />
+            <img src={logo} alt="hero image" />
           </div>
         </div>
       </main>
