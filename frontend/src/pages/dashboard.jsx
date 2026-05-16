@@ -4,7 +4,7 @@ import { GetOtp } from "../api/auth";
 import gettingTime from "../utils/gettingTime";
 import toast, { Toaster } from 'react-hot-toast';
 import WelcomeToast from "../component/toaster/Welcometoaster";
-import logo from "frontend/src/assets/image.png"
+import logo from "../assets/image.png"
 export default function Dashboard() {
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
