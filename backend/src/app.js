@@ -10,7 +10,11 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(cors({
-  origin: "https://authcation-system.vercel.app/",
+  origin: [
+    "http://localhost:5173",
+    "https://authcation-system.vercel.app"
+
+  ],
   credentials: true
 }));
 
