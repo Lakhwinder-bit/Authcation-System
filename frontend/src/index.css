@@ -1,0 +1,78 @@
+@import "tailwindcss";
+body{
+    font-family: monospace;
+}
+.btn-logo {
+  padding: 6px 20px;           /* py-1.5 px-5 */
+  font-size: 18px;             /* text-lg */
+  color: #374151;              /* gray-700 */
+  border-radius: 24px;         /* rounded-3xl */
+  border: 1px solid #6b7280;   /* gray-500 */
+  background: transparent;
+  cursor: pointer;
+}
+.btn-color{
+    background:rgb(251, 228, 99) !important;
+    border: none !important;
+}
+
+/* Login state */
+.image-panel {
+  transition: transform 0.8s , opacity 0.8s ease-in-out;
+  will-change: transform;
+}
+
+/* Register (default) */
+.register-image {
+  transform: translateX(0%);
+  /* opacity: 1; */
+}
+
+/* Login */
+.login-image {
+  transform: translateX(-100%);
+  /* opacity: 1; */
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  position: relative;
+  animation: l9-0 1.5s infinite steps(2);
+}
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #000;
+}
+.loader::before {
+  box-shadow: 26px 0;
+  transform: translateX(-26px);
+  animation: l9-1 .75s infinite linear alternate;
+}
+.loader::after {
+  transform: translateX(13px) rotate(0deg) translateX(13px);
+  animation: l9-2 .75s infinite linear alternate;
+}
+@keyframes l9-0 {
+    0% ,49.9% {transform: scale(1)}
+    50%,100%  {transform: scale(-1)}
+}
+@keyframes l9-1 {
+    100%{box-shadow: 52px 0}
+}
+@keyframes l9-2 {
+    100%{transform: translateX(13px) rotate(-180deg) translateX(13px)}
+}
+
+/* hide browser native password reveal button */
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  display: none;
+}
