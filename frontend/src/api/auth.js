@@ -1,7 +1,7 @@
 // api/auth.js
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/api/auth";
+const BASE_URL = "https://authcation-system-backend.onrender.com";
 
 export const RegestionApi = async (data) => {
   const res = await fetch(`${BASE_URL}/register`, {
