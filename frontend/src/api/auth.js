@@ -1,4 +1,3 @@
-// api/auth.js
 import axios from "axios";
 
 const BASE_URL = "https://authcation-system-backend.onrender.com/api/auth";
